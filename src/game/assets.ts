@@ -1,57 +1,65 @@
 /**
  * Every static asset path in one place, so no component ever hardcodes a URL.
- * Files live under `public/`, so these are absolute web paths.
+ * Files live under `public/`, so these are resolved against the deploy base.
  */
 
+/**
+ * Prefixes a `public/` path with the base the site is mounted at — `/` locally,
+ * `/catplatformer/` on GitHub Pages. Vite rewrites the asset URLs it can see in
+ * HTML and CSS, but never strings like these, so they ask for the base
+ * themselves.
+ */
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+
 export const IMAGES = {
-  back: "/images/back.png",
-  bananaCatHeart: "/images/bananacatheart.png",
+  back: asset("images/back.png"),
+  bananaCatHeart: asset("images/bananacatheart.png"),
   /** The play-area frame. Referenced by URL from `styles/pages/game.css`. */
-  frame: "/images/cattachasm_border.png",
-  catDead: "/images/catded.png",
-  cutter: "/images/cutter.png",
-  play: "/images/play.png",
-  sheriff: "/images/sheriff.webp",
-  sniper: "/images/sniper.png",
-  star: "/images/star.png",
-  start: "/images/start.png",
+  frame: asset("images/cattachasm_border.png"),
+  catDead: asset("images/catded.png"),
+  cutter: asset("images/cutter.png"),
+  play: asset("images/play.png"),
+  sheriff: asset("images/sheriff.webp"),
+  sniper: asset("images/sniper.png"),
+  star: asset("images/star.png"),
+  start: asset("images/start.png"),
 } as const;
 
 export const GIFS = {
-  bananaCat: "/others/bananacat.gif",
-  background: "/others/bg.gif",
-  bossAngry: "/others/catbossangry.gif",
-  bossExplaining: "/others/catbossexplaining.gif",
-  bossMain: "/others/catbossmain.gif",
-  catCry: "/others/catcry.gif",
-  catShock: "/others/catshock.gif",
-  game: "/others/game.gif",
-  happyCat: "/others/happycat.gif",
-  laughingCat: "/others/laughingcat.gif",
-  yapapa: "/others/yapapa.gif",
+  bananaCat: asset("others/bananacat.gif"),
+  background: asset("others/bg.gif"),
+  bossAngry: asset("others/catbossangry.gif"),
+  bossExplaining: asset("others/catbossexplaining.gif"),
+  bossMain: asset("others/catbossmain.gif"),
+  catCry: asset("others/catcry.gif"),
+  catShock: asset("others/catshock.gif"),
+  game: asset("others/game.gif"),
+  happyCat: asset("others/happycat.gif"),
+  laughingCat: asset("others/laughingcat.gif"),
+  yapapa: asset("others/yapapa.gif"),
 } as const;
 
 export const SOUNDS = {
-  bonk: "/sounds/bonk.mp3",
-  bossMusic: "/sounds/bossmusic.mp3",
-  catDead: "/sounds/catded.mp3",
-  catLaughing: "/sounds/catlaughing.mp3",
-  chineseCat: "/sounds/chinesecat.mp3",
-  collect: "/sounds/collect.mp3",
-  cry: "/sounds/cry.mp3",
-  death: "/sounds/death.mp3",
-  dialogue: "/sounds/dialogue.mp3",
-  footsteps: "/sounds/footsteps.mp3",
-  germanCat: "/sounds/germancat.mp3",
-  happy: "/sounds/happy.mp3",
-  jump: "/sounds/jump.mp3",
-  levelFinish: "/sounds/levelfinish.mp3",
-  levelMusic: "/sounds/levelmusic.mp3",
-  roll: "/sounds/roll.mp3",
-  sheriffReload: "/sounds/sheriffreload.mp3",
-  sheriffShot: "/sounds/sheriffsound.mp3",
-  sniperShot: "/sounds/snipersound.mp3",
-  yapapa: "/sounds/yapapa.mp3",
+  bonk: asset("sounds/bonk.mp3"),
+  bossMusic: asset("sounds/bossmusic.mp3"),
+  catDead: asset("sounds/catded.mp3"),
+  catLaughing: asset("sounds/catlaughing.mp3"),
+  chineseCat: asset("sounds/chinesecat.mp3"),
+  collect: asset("sounds/collect.mp3"),
+  cry: asset("sounds/cry.mp3"),
+  death: asset("sounds/death.mp3"),
+  dialogue: asset("sounds/dialogue.mp3"),
+  footsteps: asset("sounds/footsteps.mp3"),
+  germanCat: asset("sounds/germancat.mp3"),
+  happy: asset("sounds/happy.mp3"),
+  jump: asset("sounds/jump.mp3"),
+  levelFinish: asset("sounds/levelfinish.mp3"),
+  levelMusic: asset("sounds/levelmusic.mp3"),
+  roll: asset("sounds/roll.mp3"),
+  sheriffReload: asset("sounds/sheriffreload.mp3"),
+  sheriffShot: asset("sounds/sheriffsound.mp3"),
+  sniperShot: asset("sounds/snipersound.mp3"),
+  yapapa: asset("sounds/yapapa.mp3"),
 } as const;
 
 /**
@@ -60,22 +68,22 @@ export const SOUNDS = {
  */
 export const TERRAIN = {
   clouds: [
-    "/images/terrain/cloud-1.png",
-    "/images/terrain/cloud-2.png",
-    "/images/terrain/cloud-3.png",
-    "/images/terrain/cloud-4.png",
+    asset("images/terrain/cloud-1.png"),
+    asset("images/terrain/cloud-2.png"),
+    asset("images/terrain/cloud-3.png"),
+    asset("images/terrain/cloud-4.png"),
   ],
   /** A lone summit, used sparsely on the farthest parallax layer. */
-  peak: "/images/terrain/peak.png",
+  peak: asset("images/terrain/peak.png"),
   /** A full ridge line, repeated to build the two nearer layers. */
-  range: "/images/terrain/range.png",
+  range: asset("images/terrain/range.png"),
   /** A decorative boulder, drawn as a cut-out prop rather than a full cell. */
-  rock: "/images/terrain/rock.png",
-  brick: "/images/terrain/brick.png",
+  rock: asset("images/terrain/rock.png"),
+  brick: asset("images/terrain/brick.png"),
   dirt: [
-    "/images/terrain/dirt-1.png",
-    "/images/terrain/dirt-2.png",
-    "/images/terrain/dirt-3.png",
+    asset("images/terrain/dirt-1.png"),
+    asset("images/terrain/dirt-2.png"),
+    asset("images/terrain/dirt-3.png"),
   ],
-  grass: ["/images/terrain/grass-1.png", "/images/terrain/grass-2.png"],
+  grass: [asset("images/terrain/grass-1.png"), asset("images/terrain/grass-2.png")],
 } as const;
