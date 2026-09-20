@@ -5,7 +5,7 @@
 
 /**
  * Prefixes a `public/` path with the base the site is mounted at — `/` locally,
- * `/catplatformer/` on GitHub Pages. Vite rewrites the asset URLs it can see in
+ * `/cattachasm/` on GitHub Pages. Vite rewrites the asset URLs it can see in
  * HTML and CSS, but never strings like these, so they ask for the base
  * themselves.
  */

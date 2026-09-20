@@ -1,4 +1,4 @@
-/** Where the site is mounted: `/` in dev, `/catplatformer/` on GitHub Pages. */
+/** Where the site is mounted: `/` in dev, `/cattachasm/` on GitHub Pages. */
 const BASE = import.meta.env.BASE_URL;
 
 /** Hangs a route path off the deploy base, so links work wherever we deploy. */
